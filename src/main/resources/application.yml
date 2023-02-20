@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url:
+    username: rental_company
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
