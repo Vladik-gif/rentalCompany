@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url:
-    username: rental_company
+    url: jdbc:postgresql://localhost:5432/rental_company
+    username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
   jpa:
