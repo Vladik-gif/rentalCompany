@@ -1,17 +1,16 @@
-package uk.vladik.rentalCompany.store.entities;
+package uk.vladik.rentalCompany.api.dto;
 
-import javax.persistence.*;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table(name = "product_categories")
-public class ProductCategoriesEntity {
+@Component
+public class ProductCategoriesDTOEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
 
-    public ProductCategoriesEntity() {}
+    public ProductCategoriesDTOEntity() {
+
+    }
 
     public Long getId() {
         return id;

@@ -1,21 +1,21 @@
-package uk.vladik.rentalCompany.store.entities;
+package uk.vladik.rentalCompany.api.dto;
 
-import javax.persistence.*;
+import org.springframework.stereotype.Component;
+
 import java.util.Date;
 
-@Entity
-@Table(name = "customer")
-public class CustomerEntity {
+@Component
+public class WorkerDTOEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+    private String position;
     private String name;
     private String email;
     private Date birth;
     private String phone;
 
-    public CustomerEntity() {
+    public WorkerDTOEntity() {
+
     }
 
     public Long getId() {
@@ -24,6 +24,14 @@ public class CustomerEntity {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getName() {

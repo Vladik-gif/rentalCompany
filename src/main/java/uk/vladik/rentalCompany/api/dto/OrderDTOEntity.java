@@ -1,38 +1,27 @@
-package uk.vladik.rentalCompany.store.entities;
+package uk.vladik.rentalCompany.api.dto;
 
 
-import javax.persistence.*;
+
+import org.springframework.stereotype.Component;
+
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "orders")
-public class OrderEntity {
+@Component
+public class OrderDTOEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    @OneToMany
-    @JoinColumn(name = "product_id")
-    private List<ProductEntity> product = new ArrayList<>();
-
-    @OneToMany
-    @JoinColumn(name = "worker_id")
-    private List<WorkerEntity> worker = new ArrayList<>();
-
-    @OneToMany
-    @JoinColumn(name = "customer_id")
-    private List<CustomerEntity> customer = new ArrayList<>();
-
+    private List<ProductDTOEntity> product;
+    private List<WorkerDTOEntity> worker;
+    private List<CustomerDTOEntity> customer;
     private Instant order_date = Instant.now();
     private Date return_date;
     private String order_status;
 
+    public OrderDTOEntity() {
 
-    public OrderEntity() {}
+    }
 
     public Long getId() {
         return id;
@@ -42,27 +31,27 @@ public class OrderEntity {
         this.id = id;
     }
 
-    public List<ProductEntity> getProduct() {
+    public List<ProductDTOEntity> getProduct() {
         return product;
     }
 
-    public void setProduct(List<ProductEntity> product) {
+    public void setProduct(List<ProductDTOEntity> product) {
         this.product = product;
     }
 
-    public List<WorkerEntity> getWorker() {
+    public List<WorkerDTOEntity> getWorker() {
         return worker;
     }
 
-    public void setWorker(List<WorkerEntity> worker) {
+    public void setWorker(List<WorkerDTOEntity> worker) {
         this.worker = worker;
     }
 
-    public List<CustomerEntity> getCustomer() {
+    public List<CustomerDTOEntity> getCustomer() {
         return customer;
     }
 
-    public void setCustomer(List<CustomerEntity> customer) {
+    public void setCustomer(List<CustomerDTOEntity> customer) {
         this.customer = customer;
     }
 
