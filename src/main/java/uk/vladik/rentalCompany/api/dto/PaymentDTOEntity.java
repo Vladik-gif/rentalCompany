@@ -1,29 +1,24 @@
-package uk.vladik.rentalCompany.store.entities;
+package uk.vladik.rentalCompany.api.dto;
 
-import javax.persistence.*;
+import org.springframework.stereotype.Component;
+
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "payment")
-public class PaymentEntity {
+@Component
+public class PaymentDTOEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-
-    @OneToMany
-    @JoinColumn(name = "order_id")
-    private List<OrderEntity> order = new ArrayList<>();
-
+    private List<OrderDTOEntity> order;
     private double order_number;
     private double to_pay;
     private double sum_pay;
 
     private Instant payment_date = Instant.now();
 
-    public PaymentEntity() {}
+    public PaymentDTOEntity() {
+
+    }
 
     public Long getId() {
         return id;
@@ -57,6 +52,10 @@ public class PaymentEntity {
         this.sum_pay = sum_pay;
     }
 
+    public void setSum_pay(int sum_pay) {
+        this.sum_pay = sum_pay;
+    }
+
     public Instant getPayment_date() {
         return payment_date;
     }
@@ -65,11 +64,11 @@ public class PaymentEntity {
         this.payment_date = payment_date;
     }
 
-    public List<OrderEntity> getOrder() {
+    public List<OrderDTOEntity> getOrder() {
         return order;
     }
 
-    public void setOrder(List<OrderEntity> order) {
+    public void setOrder(List<OrderDTOEntity> order) {
         this.order = order;
     }
 }

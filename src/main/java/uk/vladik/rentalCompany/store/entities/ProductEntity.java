@@ -1,6 +1,8 @@
 package uk.vladik.rentalCompany.store.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -9,22 +11,14 @@ public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
-    @ManyToOne
+
+    @OneToMany
     @JoinColumn(name = "product_categories_id")
-    private ProductCategoriesEntity productCategoriesEntity;
-    private String salary;
+    private List<ProductCategoriesEntity> productCategoriesEntity = new ArrayList<>();
 
-    public ProductEntity(Long id,
-                         ProductCategoriesEntity productCategoriesEntity,
-                         String salary) {
-        this.id = id;
-        this.productCategoriesEntity = productCategoriesEntity;
-        this.salary = salary;
-    }
+    private double salary;
 
-    public ProductEntity() {
-
-    }
+    public ProductEntity() {}
 
     public Long getId() {
         return id;
@@ -34,19 +28,19 @@ public class ProductEntity {
         this.id = id;
     }
 
-    public ProductCategoriesEntity getProductCategoriesEntity() {
+    public List<ProductCategoriesEntity> getProductCategoriesEntity() {
         return productCategoriesEntity;
     }
 
-    public void setProductCategoriesEntity(ProductCategoriesEntity productCategoriesEntity) {
+    public void setProductCategoriesEntity(List<ProductCategoriesEntity> productCategoriesEntity) {
         this.productCategoriesEntity = productCategoriesEntity;
     }
 
-    public String getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(String salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 }
